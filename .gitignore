@@ -1,0 +1,31 @@
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Environment variables
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose.override.yml
+docker-compose*.env
+.dockerignore
+
+# Build output
+dist/
+build/
+
+# Optional npm cache directory
