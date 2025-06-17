@@ -33,4 +33,4 @@ jobs:
           docker stop backend-dev || true
           docker rm backend-dev || true
           docker build -t backend-docker .
-          docker run -d -p 8006:8000 --name backend-dev backend-docker
+          docker run -d -p 8008:8000 --name backend-dev backend-docker
