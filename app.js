@@ -3,7 +3,7 @@ const app = express();
 const PORT = 8000;
 
 app.get('/', (req, res) => {
-  res.send('Hello from EC2 master code vidyasagar maharaj ji ki jay1 maharji bht knowledgebs');
+  res.send('Hello from EC2!');
 });
 
 app.listen(PORT, '0.0.0.0', () => {
