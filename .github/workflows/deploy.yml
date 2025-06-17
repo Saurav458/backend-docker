@@ -1,36 +1,36 @@
-# name: Deploy to EC2 with Docker
+name: Deploy to EC2 with Docker
 
-# on:
-#   push:
-#     branches:
-#       - master
+on:
+  push:
+    branches:
+      - master
 
-# jobs:
-#   deploy:
-#     runs-on: ubuntu-latest
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
 
-#     steps:
-#     - name: Checkout code
-#       uses: actions/checkout@v3
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-#     - name: Copy files via SSH
-#       uses: appleboy/scp-action@v0.1.7
-#       with:
-#         host: ${{ secrets.EC2_HOST }}
-#         username: ubuntu
-#         key: ${{ secrets.EC2_KEY }}
-#         source: "."
-#         target: "/home/ubuntu/backend"
+    - name: Copy files via SSH
+      uses: appleboy/scp-action@v0.1.7
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ubuntu
+        key: ${{ secrets.EC2_KEY }}
+        source: "."
+        target: "/home/ubuntu/backend-docker"
 
-#     - name: Run Docker on EC2
-#       uses: appleboy/ssh-action@v1.0.0
-#       with:
-#         host: ${{ secrets.EC2_HOST }}
-#         username: ubuntu
-#         key: ${{ secrets.EC2_KEY }}
-#         script: |
-#           cd /home/ubuntu/backend
-#           docker stop backend || true
-#           docker rm backend || true
-#           docker build -t backend .
-#           docker run -d -p 8000:8000 --name backend backend
+    - name: Run Docker on EC2
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ubuntu
+        key: ${{ secrets.EC2_KEY }}
+        script: |
+          cd /home/ubuntu/backend-docker
+          docker stop backend-docker || true
+          docker rm backend-docker || true
+          docker build -t backend-docker .
+          docker run -d -p 8000:8000 --name backend my-blog
