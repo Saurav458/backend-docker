@@ -30,7 +30,7 @@ jobs:
         key: ${{ secrets.EC2_KEY }}
         script: |
           cd /home/ubuntu/backend-docker
-          docker stop backend-docker || true
-          docker rm backend-docker || true
+          docker stop backend-dev || true
+          docker rm backend-dev || true
           docker build -t backend-docker .
-          docker run -d -p 8001:8001 --name backend-dev my-blog
+          docker run -d -p 8000:8000 --name backend-dev backend-docker
